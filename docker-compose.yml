@@ -1,0 +1,8 @@
+web:
+  build: ./frontend
+  ports:
+  - "3000:3000"
+  volumes:
+  - ./frontend/src:/frontend/src:rw
+  environment:
+  - NODE_ENV=dev
