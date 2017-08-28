@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import './searchRoom.css';
-import { Table } from 'antd';
 class searchRoom extends React.Component{
     constructor(){
         super();
@@ -20,7 +19,6 @@ class searchRoom extends React.Component{
     }
 
     onSearchRoom = (e) => {
-        console.log('test');
         axios.post('http://localhost:8091/searchRoom',{
             min:this.state.minValue,
             max:this.state.maxValue
@@ -32,9 +30,12 @@ class searchRoom extends React.Component{
                 console.log(this.state.resultSearchRoom);
             }.bind(this))
             .catch(function (error) {
-                console.log('test');
                 console.log(error);
             });
+    }
+
+    onClickRoomInfo = (e) =>{
+        console.log("Go to rent page")
     }
 
     render(){
@@ -43,7 +44,7 @@ class searchRoom extends React.Component{
         var resultInfo =[];
         for (var i = 0; i < resultSearchroom.length; i++) {
             resultInfo.push(
-                <tr>
+                <tr onClick={this.onClickRoomInfo}>
                     <td>
                         {resultSearchroom[i].name}{resultSearchroom[i].location}
                     </td>

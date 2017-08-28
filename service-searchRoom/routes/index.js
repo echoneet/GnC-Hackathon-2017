@@ -17,7 +17,7 @@ router.get('/searchRoom', function(req, res, next) {
 });
 
 router.post('/searchRoom', function(req, res, next) {
-    db.Room.find({price:{$gte:req.body.min,$lte:req.body.max}},function (err,docs) {
+    db.Room.find({price:{$gte:req.body.min,$lte:req.body.max}}).sort({price:1},function (err,docs) {
         console.log(docs);
         res.send(docs);
     })
