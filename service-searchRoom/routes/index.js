@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongojs = require('mongojs');
 var db = mongojs('dev.iris.echoneet.space/Hackathon2017',['Room']);
-db.connect;
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'SearchRoomService' });

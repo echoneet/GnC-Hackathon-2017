@@ -1,0 +1,15 @@
+{
+  "name": "initial-database",
+  "version": "1.0.0",
+  "description": "for initial database",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mike",
+  "license": "ISC",
+  "dependencies": {
+    "mongojs": "^2.4.1"
+  }
+}
