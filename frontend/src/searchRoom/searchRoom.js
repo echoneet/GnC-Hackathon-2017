@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-
+import './searchRoom.css';
+import { Table } from 'antd';
 class searchRoom extends React.Component{
     constructor(){
         super();
@@ -39,12 +40,30 @@ class searchRoom extends React.Component{
     render(){
         var resultSearchroom = this.state.resultSearchRoom;
         var resultSearch = [];
+        var resultInfo =[];
         for (var i = 0; i < resultSearchroom.length; i++) {
-            console.log(resultSearchroom[i].name)
+            resultInfo.push(
+                <tr>
+                    <td>
+                        {resultSearchroom[i].name}{resultSearchroom[i].location}
+                    </td>
+                    <td>
+                        {resultSearchroom[i].tel}
+                    </td>
+                    <td>
+                        {resultSearchroom[i].price}
+                    </td>
+                </tr>
+            );
         }
         resultSearch.push(
             <div>
+                <hr/>
                 ผลการค้นหา
+                <hr/>
+                <table>
+                    {resultInfo}
+                </table>
             </div>
         )
         return(
