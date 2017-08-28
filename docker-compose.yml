@@ -1,8 +1,16 @@
-web:
-  build: ./frontend
-  ports:
-  - "3000:3000"
-  volumes:
-  - ./frontend/src:/frontend/src:rw
-  environment:
-  - NODE_ENV=dev
+version: '3.2'
+services:
+    mongoDb:
+        image: mongo
+        ports:
+        - "27017:27017"
+    web:
+        build: ./frontend
+        ports:
+        - "3000:3000"
+        volumes:
+        - ./frontend/src:/frontend/src:rw
+    searchRoomService:
+        build: ./service-searchRoom
+        ports:
+        - "8080:8080"
