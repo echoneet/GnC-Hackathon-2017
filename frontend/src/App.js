@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
+//import {Route,Switch} from 'react-router-dom';
 import logo from './logo.svg';
+import SearchRoom from './searchRoom/searchRoom';
 import './App.css';
 
 class App extends Component {
@@ -10,9 +12,7 @@ class App extends Component {
                     <img src={logo} className="App-logo" alt="logo"/>
                     <h2>Welcome to App</h2>
                 </div>
-                <p className="App-intro">
-                    Hello world! test aa
-                </p>
+                <SearchRoom/>
             </div>
         );
     }

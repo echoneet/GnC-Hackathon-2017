@@ -7,9 +7,12 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-
+var cors = require('cors');
 var app = express();
-
+var corsOptions = {
+    origin: 'http://localhost:3000'
+}
+app.use(cors(corsOptions))
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
