@@ -44,6 +44,16 @@ db.Room.find(function (err,docs) {
             "picture":"https://www.movenpick.com/typo3temp/_processed_/csm_Pattaya_xxxxxxxxxx_i120042_05_ffbd5c9140.jpg",
             "status" : "notReserved"
         })
+        db.Room.insert({
+            "name" : "บ้านป้าแต๋วน้องยายสา พี่ตาศรี มีพื้นที่มากกว่า2บรรทัด",
+            "location" : "602/12 อาคารเตมีศรีภูมิร่องนภาลัย ซอยท่าเหล็กกำแพงโล่ง ถ.อารามพรรษาพงศ์ดอนหลวง ต.สุมนธาราม อ.สิงหปราชัยปราการหลวง จ.อุบลราชธานี รหะสไปรษณี 1234567",
+            "roomSize" : "7.50 X 15.00 ตร.ม.",
+            "tel" : "0873523332",
+            "price" : 3300,
+            "deposit" : "6 เดือน",
+            "picture": "http://4.bp.blogspot.com/-RSAdi3NMMs8/VakWj_znRcI/AAAAAAAAAMI/lp19iktRyCw/s1600/Rent%2Broom%2Bstockholm.jpg",
+            "status" : "notReserved"
+        })
         console.log("initial data success")
     }
 })
