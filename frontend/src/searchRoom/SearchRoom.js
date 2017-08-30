@@ -8,7 +8,8 @@ class SearchRoom extends React.Component{
         this.state ={
             minValue: 0,
             maxValue: 1000,
-            resultSearchRoom: []
+            resultSearchRoom: [],
+            searchRoom:false
         }
     }
     onChangeSelector = (e) => {
@@ -20,6 +21,9 @@ class SearchRoom extends React.Component{
     }
 
     onSearchRoom = (e) => {
+        this.setState({
+            searchRoom: true
+        })
         axios.post('http://localhost:8091/SearchRoom',{
             min:this.state.minValue,
             max:this.state.maxValue
@@ -50,27 +54,42 @@ class SearchRoom extends React.Component{
         var resultSearch = [];
         var resultInfo =[];
         for (var i = 0; i < resultSearchroom.length; i++) {
+            let tel = [];
+            for (var t =0;t<resultSearchroom[i].tel.length;t++){
+                if(t !== 0){
+                    tel.push(
+                        <div key={t}>เบอร์ต่อ: {resultSearchroom[i].tel[t]}</div>
+                    )
+                }
+                else {
+                    tel.push(
+                        resultSearchroom[i].tel[t]
+                    )
+                }
+            }
             resultInfo.push(
-                <Link to="../rentRoom" >
-                <tr onClick={() => this.onClickRoomInfo(i)}>
-                    <td>
-                        <p className="nameRoom">
-                            {resultSearchroom[i].name}&nbsp;{resultSearchroom[i].location}
-                        </p>
-                    </td>
-                    <td>
-                        {resultSearchroom[i].tel}
-                    </td>
-                    <td>
-                        {this.addCommaToLargeNum(resultSearchroom[i].price)}
-                    </td>
+
+                <tr key={i} onClick={() => this.onClickRoomInfo(i)}>
+                    <Link key={i} to="../rentRoom" >
+                        <td>
+                            <p className="nameRoom">
+                                {resultSearchroom[i].name}&nbsp;{resultSearchroom[i].location}
+                            </p>
+                        </td>
+                        <td>
+                            Tel:{tel}
+                        </td>
+                        <td>
+                            {this.addCommaToLargeNum(resultSearchroom[i].price)}
+                        </td>
+                    </Link>
                 </tr>
-                </Link>
+
             );
         }
         if(resultSearchroom.length !== 0){
             resultSearch.push(
-                <div>
+                <div key={i}>
                     <hr/>
                     ผลการค้นหา
                     <hr/>
@@ -80,6 +99,19 @@ class SearchRoom extends React.Component{
                 </div>
             )
         }
+        else if(this.state.searchRoom) {
+            resultSearch.push(
+                <div key={i}>
+                    <hr/>
+                    ผลการค้นหา
+                    <hr/>
+                    <center>
+                        ไม่มีห้องที่ค้นหา
+                    </center>
+                </div>
+            )
+        }
+
         return(
             <div>
                 ราคาเดือนละ &nbsp;&nbsp;&nbsp;
