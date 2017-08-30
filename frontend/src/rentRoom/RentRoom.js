@@ -29,8 +29,9 @@ class RentRoom extends React.Component{
                 console.log(error);
             });
     }
-    onClickPicture= (e) => {
-        console.log("test");
+
+    addCommaToLargeNum = (number) =>{
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
     render(){
@@ -63,7 +64,7 @@ class RentRoom extends React.Component{
                     ขนาดห้อง :{roomSelected.roomSize}
                 </div>
                 <div>
-                    ราคา : {roomSelected.price}
+                    ราคา : {this.addCommaToLargeNum(roomSelected.price)}
                 </div>
                 <div>
                     มัดจำ : {roomSelected.deposit}

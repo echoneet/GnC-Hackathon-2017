@@ -42,6 +42,9 @@ class SearchRoom extends React.Component{
 
     }
 
+    addCommaToLargeNum = (number) =>{
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
     render(){
         var resultSearchroom = this.state.resultSearchRoom;
         var resultSearch = [];
@@ -57,7 +60,7 @@ class SearchRoom extends React.Component{
                         {resultSearchroom[i].tel}
                     </td>
                     <td>
-                        {resultSearchroom[i].price}
+                        {this.addCommaToLargeNum(resultSearchroom[i].price)}
                     </td>
                 </tr>
                 </Link>
