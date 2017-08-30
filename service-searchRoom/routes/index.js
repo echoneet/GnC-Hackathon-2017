@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'SearchRoomService' });
 });
 
-router.get('/searchRoom', function(req, res, next) {
+router.get('/SearchRoom', function(req, res, next) {
     db.Room.find(function (err, docs) {
         console.log(docs);
         res.send(docs);
@@ -16,8 +16,8 @@ router.get('/searchRoom', function(req, res, next) {
     })
 });
 
-router.post('/searchRoom', function(req, res, next) {
-    db.Room.find({price:{$gte:req.body.min,$lte:req.body.max}}).sort({price:1},function (err,docs) {
+router.post('/SearchRoom', function(req, res, next) {
+    db.Room.find({price:{$gte:req.body.min,$lte:req.body.max},status:"notReserved"}).sort({price:1},function (err,docs) {
         console.log(docs);
         res.send(docs);
     })

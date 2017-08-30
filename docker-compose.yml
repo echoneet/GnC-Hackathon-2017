@@ -11,6 +11,6 @@ services:
         volumes:
         - ./frontend/src:/frontend/src:rw
     searchRoomService:
-        build: ./service-searchRoom
+        build: ./service-SearchRoom
         ports:
         - "8080:8080"
