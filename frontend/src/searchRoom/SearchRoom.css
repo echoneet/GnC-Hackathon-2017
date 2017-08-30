@@ -1,0 +1,13 @@
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+td {
+    width: 33% !important;
+    border: 1px solid black;
+}
+.nameRoom{
+    line-height: 1.5em;
+    height: 3em;       /* height is 2x line-height, so two lines will display */
+    overflow: hidden;
+}

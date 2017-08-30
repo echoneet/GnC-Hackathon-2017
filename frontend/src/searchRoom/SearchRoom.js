@@ -54,7 +54,9 @@ class SearchRoom extends React.Component{
                 <Link to="../rentRoom" >
                 <tr onClick={() => this.onClickRoomInfo(i)}>
                     <td>
-                        {resultSearchroom[i].name}{resultSearchroom[i].location}
+                        <p className="nameRoom">
+                            {resultSearchroom[i].name}&nbsp;{resultSearchroom[i].location}
+                        </p>
                     </td>
                     <td>
                         {resultSearchroom[i].tel}
