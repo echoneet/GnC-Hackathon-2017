@@ -8,3 +8,5 @@ service-rentRoom/node_modules
 service-rentRoom/.idea
 service-uploadPayment/node_modules
 service-uploadPayment/.idea
+service-register/node_modules
+service-register/.idea/
