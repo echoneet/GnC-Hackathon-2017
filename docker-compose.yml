@@ -10,15 +10,15 @@ services:
         - "3000:3000"
         volumes:
         - ./frontend/src:/frontend/src:rw
-    searchRoomService:
+    searchroomservice:
         build: ./service-searchRoom
         ports:
         - "8091:8091"
-    rentRoomService:
-            build: ./service-rentRoom
-            ports:
-            - "8092:8092"
-    uploadPaymentService:
-            build: ./service-uploadPayment
-            ports:
-            - "8093:8093"
+    rentroomservice:
+        build: ./service-rentRoom
+        ports:
+        - "8092:8092"
+    uploadpaymentservice:
+        build: ./service-uploadPayment
+        ports:
+        - "8093:8093"
