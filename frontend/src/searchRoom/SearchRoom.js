@@ -50,6 +50,7 @@ class SearchRoom extends React.Component{
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
     render(){
+
         var resultSearchroom = this.state.resultSearchRoom;
         var resultSearch = [];
         var resultInfo =[];
