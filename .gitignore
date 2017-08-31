@@ -6,3 +6,7 @@ for-dev-service-initial-database/node_modules
 for-dev-service-initial-database/.idea
 service-uploadPayment/node_modules
 service-uploadPayment/.idea
+service-reportRentRoom/node_modules
+service-reportRentRoom/.idea
+service-rentRoom/node_modules
+service-rentRoom/.idea

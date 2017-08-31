@@ -24,6 +24,9 @@ class RentRoom extends React.Component{
         })
             .then(function (response) {
                 console.log(response.data);
+                if(response.data === 'Reserved'){
+                    window.location = '/';
+                }
             })
             .catch(function (error) {
                 console.log(error);
