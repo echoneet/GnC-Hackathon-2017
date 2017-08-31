@@ -11,6 +11,14 @@ services:
         volumes:
         - ./frontend/src:/frontend/src:rw
     searchRoomService:
-        build: ./service-SearchRoom
+        build: ./service-searchRoom
         ports:
-        - "8080:8080"
+        - "8091:8091"
+    rentRoomService:
+            build: ./service-rentRoom
+            ports:
+            - "8092:8092"
+    uploadPaymentService:
+            build: ./service-uploadPayment
+            ports:
+            - "8093:8093"

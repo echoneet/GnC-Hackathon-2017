@@ -3,6 +3,10 @@ var router = express.Router();
 var mongojs = require('mongojs');
 var db = mongojs('dev.iris.echoneet.space/Hackathon2017',['Room']);
 
+db.on('error', function (err) {
+    console.log('database error', err)
+})
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'SearchRoomService' });
