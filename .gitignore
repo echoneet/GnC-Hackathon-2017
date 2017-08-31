@@ -4,3 +4,5 @@ service-searchRoom/node_modules
 service-searchRoom/.idea
 for-dev-service-initial-database/node_modules
 for-dev-service-initial-database/.idea
+service-uploadPayment/node_modules
+service-uploadPayment/.idea

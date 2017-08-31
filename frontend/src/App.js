@@ -3,6 +3,7 @@ import {Route,BrowserRouter} from 'react-router-dom';
 import logo from './logo.svg';
 import SearchRoom from './searchRoom/SearchRoom';
 import RoomInfo from './rentRoom/RentRoom';
+import UploadPayment from './uploadPayment/UploadPayment'
 import './App.css';
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
                 <div>
                     <Route exact path="/" component={SearchRoom}/>
                     <Route exact path="/rentRoom" component={RoomInfo}/>
+                    <Route exact path="/uploadPayment" component={UploadPayment}/>
                 </div>
             </div>
             </BrowserRouter>
