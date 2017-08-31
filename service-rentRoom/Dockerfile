@@ -1,7 +1,7 @@
 FROM node:8.4.0
 
 # Create app directory
-WORKDIR /service-searchRoom
+WORKDIR /service-rentRoom
 
 # Install app dependencies
 COPY package.json ./
@@ -13,7 +13,7 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-EXPOSE 8091
+EXPOSE 8092
 
 CMD [ "npm", "start" ]
 
