@@ -9,7 +9,7 @@ class SearchRoom extends React.Component{
             minValue: 0,
             maxValue: 1000,
             resultSearchRoom: [],
-            searchRoom:false
+            showSearchRoom:false
         }
     }
     onChangeSelector = (e) => {
@@ -22,7 +22,7 @@ class SearchRoom extends React.Component{
 
     onSearchRoom = (e) => {
         this.setState({
-            searchRoom: true
+            showSearchRoom: true
         })
         axios.post('http://localhost:8091/SearchRoom',{
             min:this.state.minValue,
@@ -49,6 +49,7 @@ class SearchRoom extends React.Component{
     addCommaToLargeNum = (number) =>{
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
+
     render(){
         var resultSearchroom = this.state.resultSearchRoom;
         var resultSearch = [];
@@ -99,7 +100,7 @@ class SearchRoom extends React.Component{
                 </div>
             )
         }
-        else if(this.state.searchRoom) {
+        else if(this.state.showSearchRoom) {
             resultSearch.push(
                 <div key={i}>
                     <hr/>
