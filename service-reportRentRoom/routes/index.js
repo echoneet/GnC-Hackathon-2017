@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongojs = require('mongojs');
-var db = mongojs('dev.iris.echoneet.space/Hackathon2017',['SlipPayment']);
+var db = mongojs('dev.iris.echoneet.space/SlipPayment',['SlipPayment']);
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -13,8 +13,14 @@ router.post('/test', function(req, res, next) {
     console.log(startMonth)
     console.log(endMonth)
     db.SlipPayment.find({rentdate:{$gte:startMonth,$lt:endMonth}},function (err,docs) {
-        console.log(docs);
-        res.send(docs);
+        if(err === null){
+            res.status(500);
+            res.send("database error");
+        }
+        else {
+            console.log(docs);
+            res.send(docs);
+        }
     })
 });
 
