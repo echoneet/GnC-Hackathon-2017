@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, BrowserRouter, Link} from 'react-router-dom';
+import {Route, BrowserRouter, Link, Redirect} from 'react-router-dom';
 import logo from './logo.svg';
 import SearchRoom from './searchRoom/SearchRoom';
 import RoomInfo from './rentRoom/RentRoom';
@@ -7,11 +7,34 @@ import UploadPayment from './uploadPayment/UploadPayment';
 import ReportRentRoom from './reportRentRoom/reportRentRoom';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
-import Login from './login/Login'
-import {Menu, Icon} from 'semantic-ui-react'
+import Login from './login/Login';
+import {Menu, Icon} from 'semantic-ui-react';
+
+class testReturn extends React.Component {
+    componentDidMount() {
+        window.localStorage.setItem("eiei", "no");
+        window.close();
+    }
+
+    render() {
+        return (
+            <div>loading</div>
+        )
+    }
+}
+
 
 class App extends React.Component {
     state = {}
+
+
+    componentDidMount() {
+        window.addEventListener("storage", function () {
+            let a = localStorage.getItem("eiei");
+            console.log(a);
+            localStorage.clear();
+        }, false);
+    }
 
     handleItemClick = (e, {name}) => this.setState({activeItem: name})
 
@@ -68,6 +91,8 @@ class App extends React.Component {
                             <Route exact path="/uploadPayment" component={UploadPayment}/>
                             <Route exact path="/login" component={Login}/>
                             <Route exact path="/reportRentRoom" component={ReportRentRoom}/>
+                            <Route exact path="/testReturn" component={testReturn}/>
+
                         </div>
                     </div>
                 </div>
