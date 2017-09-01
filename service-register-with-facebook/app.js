@@ -14,10 +14,13 @@ var Strategy = require('passport-facebook').Strategy;
 
 var db = mongojs('dev.iris.echoneet.space/registerWithFacebookService', ["userdata"]);
 
+//generate uuid
+const uuidv4 = require('uuid/v4');
+
 passport.use(new Strategy({
         clientID: '128532184445160',
         clientSecret: 'd36d0221f55e198b49c0c076eb764072',
-        callbackURL: 'http://localhost:8095/login/facebook/'
+        callbackURL: 'http://localhost:8095/login/facebook/:uuid'
     },
     function (accessToken, refreshToken, profile, cb) {
         return cb(null, profile);
@@ -30,8 +33,12 @@ passport.serializeUser(function (user, cb) {
 passport.deserializeUser(function (obj, cb) {
     cb(null, obj);
 });
-
+var cors = require('cors');
 var app = express();
+var corsOptions = {
+    origin: 'http://localhost:3000'
+}
+app.use(cors(corsOptions))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -59,9 +66,10 @@ app.get('/user',
         res.send(req.user)
     });
 
-app.get('/login/facebook',
+app.get('/login/facebook/:uuid',
     passport.authenticate('facebook', {failureRedirect: '/login/fail'}),
     function (req, res) {
+        console.log("query url : "+req.params.code);
         db.userdata.findOne({id: req.user.id}, function (err, docs) {
             console.log(docs);
             if (docs === null) {
@@ -71,12 +79,23 @@ app.get('/login/facebook',
         res.send(req.user)
     });
 
+app.get('/getUUID',function (req,res,next) {
+    console.log("getUUID")
+    res.send(uuidv4())
+})
+app.post('/LoginByFacebook',function (req,res,next) {
+    console.log(req.body.uuid)
+    res.send("login OK")
+})
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
+
+
 
 // error handler
 app.use(function (err, req, res, next) {
