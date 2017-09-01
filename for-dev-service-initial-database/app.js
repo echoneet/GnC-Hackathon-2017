@@ -1,5 +1,5 @@
 var mongojs = require('mongojs');
-var db = mongojs('dev.iris.echoneet.space/Hackathon2017',['Room']);
+var db = mongojs('dev.iris.echoneet.space/Hackathon2017',['Room','SlipPayment']);
 
 db.Room.find(function (err,docs) {
     if(docs.length == 0){
@@ -53,6 +53,21 @@ db.Room.find(function (err,docs) {
             "deposit" : "6 เดือน",
             "picture": "http://4.bp.blogspot.com/-RSAdi3NMMs8/VakWj_znRcI/AAAAAAAAAMI/lp19iktRyCw/s1600/Rent%2Broom%2Bstockholm.jpg",
             "status" : "notReserved"
+        })
+        db.SlipPayment.insert({
+            "rentername" : "MoJi",
+            "room" : "บ้านป้าราตรี",
+            "rentdate" : new Date("2017/08/17")
+        })
+        db.SlipPayment.insert({
+            "rentername" : "Benz",
+            "room" : "คอนโดหน้าซอยวัดร้าง",
+            "rentdate" : new Date("2017/08/30")
+        })
+        db.SlipPayment.insert({
+            "rentername" : "Coconut",
+            "room" : "แสนระทมบ้านพัก",
+            "rentdate" : new Date("2017/07/05")
         })
         console.log("initial data success")
     }

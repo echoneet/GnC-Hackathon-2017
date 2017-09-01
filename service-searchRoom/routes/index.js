@@ -1,11 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var mongojs = require('mongojs');
-var db = mongojs('dev.iris.echoneet.space/Hackathon2017',['Room']);
-
-db.on('error', function (err) {
-    console.log('database error', err)
-})
+var axios = require('axios');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -13,18 +8,31 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/SearchRoom', function(req, res, next) {
-    db.Room.find(function (err, docs) {
-        console.log(docs);
-        res.send(docs);
-        // docs is an array of all the documents in Room
+    axios.get('http://localhost:8096/SearchRoomInManage',{
     })
+        .then(function (response) {
+            console.log(response.data)
+            res.send(response.data)
+        })
+        .catch(function (error) {
+            console.log(error);
+            res.send(error)
+        });
 });
 
 router.post('/SearchRoom', function(req, res, next) {
-    db.Room.find({price:{$gte:req.body.min,$lte:req.body.max},status:"notReserved"}).sort({price:1},function (err,docs) {
-        console.log(docs);
-        res.send(docs);
+    axios.post('http://localhost:8096/SearchRoomInManage',{
+        min:req.body.min,
+        max:req.body.max
     })
+        .then(function (response) {
+            console.log(response.data)
+            res.send(response.data)
+        })
+        .catch(function (error) {
+            console.log(error);
+            res.send(error)
+        });
 });
 
 module.exports = router;

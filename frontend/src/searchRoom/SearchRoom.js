@@ -51,6 +51,7 @@ class SearchRoom extends React.Component{
     }
 
     render(){
+
         var resultSearchroom = this.state.resultSearchRoom;
         var resultSearch = [];
         var resultInfo =[];
