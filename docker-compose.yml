@@ -22,3 +22,7 @@ services:
         build: ./service-uploadPayment
         ports:
         - "8093:8093"
+    reportRentRoom:
+        build: ./service-reportRentRoom
+        ports:
+        - "8094:8094"
