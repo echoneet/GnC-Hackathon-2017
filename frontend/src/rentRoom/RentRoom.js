@@ -5,7 +5,7 @@ import axios from 'axios';
 import Lightbox from 'react-image-lightbox';
 
 
-class RentRoom extends React.Component{
+class RentRoom extends React.Component {
     constructor(props) {
         super(props);
 
@@ -14,17 +14,18 @@ class RentRoom extends React.Component{
             isOpen: false
         };
     }
+
     backToSearchRoom = (e) => {
         window.location = '/';
     }
     onClickRentRoom = (e) => {
         let roomSelected = JSON.parse(window.sessionStorage.getItem("roomSelected"));
-        axios.post('http://localhost:8092/RentRoom',{
-            id:roomSelected._id
+        axios.post('http://localhost:8092/RentRoom', {
+            id: roomSelected._id
         })
             .then(function (response) {
                 console.log(response.data);
-                if (response.data === 'Reserved'){
+                if (response.data === 'Reserved') {
                     window.location = '/';
                 }
             })
@@ -33,11 +34,11 @@ class RentRoom extends React.Component{
             });
     }
 
-    addCommaToLargeNum = (number) =>{
+    addCommaToLargeNum = (number) => {
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
-    render(){
+    render() {
         let roomSelected = JSON.parse(window.sessionStorage.getItem("roomSelected"));
         const images = [
             roomSelected.picture,
@@ -52,14 +53,14 @@ class RentRoom extends React.Component{
         } = this.state;
 
         var settings = {
-            dots:true,
+            dots: true,
             className: 'center',
             slidesToShow: 3,
             speed: 500
         };
 
-        return(
-            <div>
+        return (
+            <div className="RentRoom">
                 <div>
                     ชื่อ : {roomSelected.name}
                 </div>
@@ -76,21 +77,21 @@ class RentRoom extends React.Component{
                     Tel : {roomSelected.tel}
                 </div>
                 <div>
-                    รูปห้อง
+                    รูปห้อง asdsad
                 </div>
                 {/*<img src={roomSelected.picture}></img>*/}
                 <div className='container'>
                     <Slider {...settings}>
-                        <div onClick={() => this.setState({ isOpen: true })}><img  src={roomSelected.picture} /></div>
-                        <div onClick={() => this.setState({ isOpen: true })}><img  src={roomSelected.picture} /></div>
-                        <div onClick={() => this.setState({ isOpen: true })}><img  src={roomSelected.picture} /></div>
+                        <div onClick={() => this.setState({isOpen: true})}><img src={roomSelected.picture}/></div>
+                        <div onClick={() => this.setState({isOpen: true})}><img src={roomSelected.picture}/></div>
+                        <div onClick={() => this.setState({isOpen: true})}><img src={roomSelected.picture}/></div>
                         {isOpen &&
                         <Lightbox
                             mainSrc={images[photoIndex]}
                             nextSrc={images[(photoIndex + 1) % images.length]}
                             prevSrc={images[(photoIndex + images.length - 1) % images.length]}
 
-                            onCloseRequest={() => this.setState({ isOpen: false })}
+                            onCloseRequest={() => this.setState({isOpen: false})}
                             onMovePrevRequest={() => this.setState({
                                 photoIndex: (photoIndex + images.length - 1) % images.length,
                             })}

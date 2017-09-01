@@ -25,41 +25,43 @@ class App extends React.Component {
                         <h2 className="App-title">Hackathon2017</h2>
                     </div>
                     <div className="App-Detail">
-                        <Menu vertical>
-                            <Link to="/login">
-                                <Menu.Item name='browse' active={activeItem === 'browse'}
-                                           onClick={this.handleItemClick}>
-                                    <Icon name='user circle outline'/>
-                                    Login/Register
+                        <div className="App-Sidebar">
+                            <Menu vertical className="Menu">
+                                <Link to="/login">
+                                    <Menu.Item name='browse' active={activeItem === 'browse'}
+                                               onClick={this.handleItemClick}>
+                                        <Icon name='user circle outline'/>
+                                        Login/Register
+                                    </Menu.Item>
+                                </Link>
+
+                                <Menu.Item>
+                                    <Icon name='grid layout'/>
+                                    Rent
+                                    <Menu.Menu>
+                                        <Link to="/">
+                                            <Menu.Item
+                                                name='Search'
+                                                active={activeItem === 'Search'}
+                                                onClick={this.handleItemClick}
+                                            >
+                                                Search
+                                            </Menu.Item>
+                                        </Link>
+
+                                        <Link to="/uploadPayment">
+                                            <Menu.Item
+                                                name='reviews'
+                                                active={activeItem === 'uploadPayment'}
+                                                onClick={this.handleItemClick}
+                                            >
+                                                uploadPayment
+                                            </Menu.Item>
+                                        </Link>
+                                    </Menu.Menu>
                                 </Menu.Item>
-                            </Link>
-
-                            <Menu.Item>
-                                <Icon name='grid layout'/>
-                                Rent
-                                <Menu.Menu>
-                                    <Link to="/">
-                                        <Menu.Item
-                                            name='Search'
-                                            active={activeItem === 'Search'}
-                                            onClick={this.handleItemClick}
-                                        >
-                                            Search
-                                        </Menu.Item>
-                                    </Link>
-
-                                    <Link to="/uploadPayment">
-                                        <Menu.Item
-                                            name='reviews'
-                                            active={activeItem === 'uploadPayment'}
-                                            onClick={this.handleItemClick}
-                                        >
-                                            uploadPayment
-                                        </Menu.Item>
-                                    </Link>
-                                </Menu.Menu>
-                            </Menu.Item>
-                        </Menu>
+                            </Menu>
+                        </div>
                         <div className="App-detail-detail">
                             <Route exact path="/" component={SearchRoom}/>
                             <Route exact path="/rentRoom" component={RoomInfo}/>
