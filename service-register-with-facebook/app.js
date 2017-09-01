@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongojs = require('mongojs');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -11,10 +12,12 @@ var users = require('./routes/users');
 var passport = require('passport');
 var Strategy = require('passport-facebook').Strategy;
 
+var db = mongojs('dev.iris.echoneet.space/registerWithFacebookService', ["userdata"]);
+
 passport.use(new Strategy({
         clientID: '128532184445160',
         clientSecret: 'd36d0221f55e198b49c0c076eb764072',
-        callbackURL: 'http://localhost:3000/login/facebook/return'
+        callbackURL: 'http://localhost:8095/login/facebook/'
     },
     function (accessToken, refreshToken, profile, cb) {
         return cb(null, profile);
@@ -47,13 +50,24 @@ app.use(passport.session());
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/login/fail', function (req, res, next) {
+    res.render('failLogin');
+});
+
+app.get('/user',
+    function (req, res) {
+        res.send(req.user)
+    });
 
 app.get('/login/facebook',
-    passport.authenticate('facebook'));
-
-app.get('/login/facebook/return',
-    passport.authenticate('facebook', { failureRedirect: '/login' }),
-    function(req, res) {
+    passport.authenticate('facebook', {failureRedirect: '/login/fail'}),
+    function (req, res) {
+        db.userdata.findOne({id: req.user.id}, function (err, docs) {
+            console.log(docs);
+            if (docs === null) {
+                db.userdata.insert(req.user);
+            }
+        });
         res.send(req.user)
     });
 
