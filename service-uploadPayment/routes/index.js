@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var multer = require('multer');
 var mongjs = require('mongojs');
 var db = mongjs('dev.iris.echoneet.space/Hackathon2017',['SlipPayment'])
 
