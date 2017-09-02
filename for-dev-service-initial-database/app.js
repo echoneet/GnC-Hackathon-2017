@@ -89,6 +89,24 @@ dbSlip.SlipPayment.find(function (err,docs) {
             "revenue" : 3000,
             "rentdate" : new Date("2017/07/05")
         })
+        dbSlip.SlipPayment.insert({
+            "ownername" : "Chanathip Suprapakron",
+            "rentername" : "ป้าปอบ",
+            "revenue" : 4000,
+            "rentdate" : new Date("2017/08/08")
+        })
+        dbSlip.SlipPayment.insert({
+            "ownername" : "Chanathip Suprapakron",
+            "rentername" : "NongPill",
+            "revenue" : 2000,
+            "rentdate" : new Date("2017/09/01")
+        })
+        dbSlip.SlipPayment.insert({
+            "ownername" : "Chanathip Suprapakron",
+            "rentername" : "NongChompoo",
+            "revenue" : 5000,
+            "rentdate" : new Date("2017/09/02")
+        })
         console.log("initial data slip success")
     }
 })
