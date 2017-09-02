@@ -19,15 +19,14 @@ class ConfirmAuth extends React.Component {
         })
             .then(function (response) {
                 console.log(response.data)
-                //localStorage.setItem('UserInfo', response.data);
-                localStorage.setItem("eiei", "oiqhwdihwqdqwidh");
-                let a = localStorage.getItem("eiei");
-                console.log(a)
+                localStorage.setItem('UserInfo', response.data);
+                window.close();
             })
             .catch(function (error) {
                 console.log(error);
+                window.close();
             });
-        //window.close();
+
     }
 
     render() {

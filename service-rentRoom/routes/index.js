@@ -9,6 +9,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/RentRoom', function(req, res, next) {
     axios.post('http://localhost:8096/RentRoomInManage',{
+        renter:req.body.renter,
         id:req.body.id
     })
         .then(function (response) {
