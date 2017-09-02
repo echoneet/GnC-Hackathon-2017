@@ -14,7 +14,7 @@ import {Menu, Icon} from 'semantic-ui-react';
 class ConfirmAuth extends React.Component {
     componentDidMount() {
         console.log(this.props.match.params.uuid)
-        axios.post('http://localhost:8095/getUserInfo', {
+        axios.post('http://localhost:8099/getUserInfo', {
             id: this.props.match.params.uuid
         })
             .then(function (response) {

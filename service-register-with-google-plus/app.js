@@ -9,7 +9,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
-
+var axios = require('axios');
 passport.use(new GoogleStrategy({
         clientID: '44383358345-gctfh0s007us3ogsl42qehfgk71vqhet.apps.googleusercontent.com',
         clientSecret: 'gqPbtDaLRnukoQB1iL-BdRVW',
@@ -53,7 +53,16 @@ app.use('/login/fail', function (req, res, next) {
 app.get('/auth/google',
     passport.authenticate('google', { scope: ['profile'],failureRedirect: '/login/fail' }),
     function(req, res) {
-        res.send(req.user)
+        axios.post('http://localhost:8099/findUser',{
+            userdetail:req.user
+        })
+            .then(function (response) {
+                res.redirect('http://localhost:3000/testreturn/'+response.data._id)
+                console.log(response.data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     });
 
 // catch 404 and forward to error handler

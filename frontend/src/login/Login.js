@@ -9,34 +9,14 @@ class LoginPage extends React.Component {
             uuid:""
         }
     }
+    onLoginByGoogle = (e) =>{
+        let url = "http://localhost:8097/auth/google";
+        window.open (url,"mywindow","menubar=1,resizable=1,width=700,height=500");
+    }
+
     onLoginByFacebook = (e) =>{
         let url ="http://localhost:8095/login/facebook";
         window.open (url,"mywindow","menubar=1,resizable=1,width=700,height=500");
-
-        /*axios.get('http://localhost:8095/getUUID')
-            .then(function (response) {
-                this.setState({
-                    uuid:response.data
-                })
-                console.log(this.state.uuid);
-                let url ="http://localhost:3000/testReturn";
-                //let url = "http://localhost:8095/login/facebook/"+this.state.uuid;
-                window.open (url,"mywindow","menubar=1,resizable=1,width=700,height=500");
-            }.bind(this))
-            .catch(function (error) {
-                console.log(error);
-            });*/
-
-        /*function authenOnFacebook(uuid) {
-            console.log(uuid)
-            axios.post('http://localhost:8095/LoginByFacebook')
-                .then(function (response) {
-                    console.log(response);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-        }*/
     }
 
     render() {
@@ -56,7 +36,7 @@ class LoginPage extends React.Component {
                     <Button color='facebook' onClick={this.onLoginByFacebook}>
                         <Icon name='facebook'/> Facebook
                     </Button>
-                    <Button color='google plus'>
+                    <Button color='google plus' onClick={this.onLoginByGoogle}>
                         <Icon name='google plus'/> Google Plus
                     </Button>
                 </div>

@@ -4,15 +4,12 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongojs = require('mongojs');
-var ObjectId = mongojs.ObjectId;
 var index = require('./routes/index');
 var users = require('./routes/users');
-
+var axios = require('axios');
 var passport = require('passport');
 var Strategy = require('passport-facebook').Strategy;
 
-var db = mongojs('dev.iris.echoneet.space/registerWithFacebookService', ["userdata"]);
 
 
 passport.use(new Strategy({
@@ -62,28 +59,18 @@ app.use('/login/fail', function (req, res, next) {
 app.get('/login/facebook',
     passport.authenticate('facebook', {failureRedirect: '/login/fail'}),
     function (req, res) {
-        db.userdata.findOne({id: req.user.id}, function (err, docs) {
-            console.log(docs);
-            if (docs === null) {
-                db.userdata.insert(req.user);
-                db.userdata.findOne({id: req.user.id}, function (err, docs) {
-                    res.redirect('http://localhost:3000/testreturn/'+docs._id);
-                })
-            }
-            else{
-                res.redirect('http://localhost:3000/testreturn/'+docs._id);
-            }
-        });
+        axios.post('http://localhost:8099/findUser',{
+            userdetail:req.user
+        })
+            .then(function (response) {
+                res.redirect('http://localhost:3000/testreturn/'+response.data._id)
+                console.log(response.data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     });
 
-app.post('/getUserInfo',function (req,res,next) {
-    console.log("getUserInfo"+req.body.id)
-    db.userdata.findOne({_id:ObjectId(req.body.id)}, function (err, docs) {
-        if(docs !== null){
-            res.send(docs.displayName)
-        }
-    })
-})
 
 app.post('/LoginByFacebook',function (req,res,next) {
     console.log(req.body.uuid)
