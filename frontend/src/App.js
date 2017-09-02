@@ -85,10 +85,18 @@ class App extends React.Component {
                                                 active={activeItem === 'Search'}
                                                 onClick={this.handleItemClick}
                                             >
-                                                Search
+                                                SearchByPrice
                                             </Menu.Item>
                                         </Link>
-
+                                        <Link to="/searchRoomByCoordinate">
+                                            <Menu.Item
+                                                name='SearchCoordinate'
+                                                active={activeItem === 'SearchCoordinate'}
+                                                onClick={this.handleItemClick}
+                                            >
+                                                SearchByCoordinate
+                                            </Menu.Item>
+                                        </Link>
                                         <Link to="/uploadPayment">
                                             <Menu.Item
                                                 name='reviews'
