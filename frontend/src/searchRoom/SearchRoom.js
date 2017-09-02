@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import './SearchRoom.css';
+import AlertContainer from 'react-alert'
+
 class SearchRoom extends React.Component{
     constructor(){
         super();
@@ -11,6 +13,16 @@ class SearchRoom extends React.Component{
             resultSearchRoom: [],
             showSearchRoom:false
         }
+    }
+
+    componentDidMount(){
+        if (window.sessionStorage.getItem("resultReserv")==="success"){
+            this.showAlertSuccess()
+        }
+        else if(window.sessionStorage.getItem("resultReserv")==="error") {
+            this.showAlertFalse()
+        }
+        window.sessionStorage.removeItem("resultReserv")
     }
     onChangeSelector = (e) => {
         let value = JSON.parse(e.target.value);
@@ -50,8 +62,28 @@ class SearchRoom extends React.Component{
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
-    render(){
+    alertOptions = {
+        offset: 14,
+        position: 'bottom right',
+        theme: 'dark',
+        time: 5000,
+        transition: 'scale'
+    }
 
+    showAlertSuccess = () => {
+        this.msg.show('Reserv success', {
+            time: 2000,
+            type: 'success'
+        })
+    }
+    showAlertFalse = () => {
+        this.msg.show("Dont't Reserv", {
+            time: 2000,
+            type: 'error'
+        })
+    }
+
+    render(){
         var resultSearchroom = this.state.resultSearchRoom;
         var resultSearch = [];
         var resultInfo =[];
@@ -127,6 +159,9 @@ class SearchRoom extends React.Component{
                 <button onClick={this.onSearchRoom}>ค้นหา</button>
                 <div>
                     {resultSearch}
+                </div>
+                <div>
+                    <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
                 </div>
             </div>
         )

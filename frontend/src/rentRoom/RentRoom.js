@@ -11,6 +11,7 @@ class RentRoom extends React.Component {
         super(props);
 
         this.state = {
+            roomdetail:JSON.parse(window.sessionStorage.getItem("roomSelected")) ,
             photoIndex: 0,
             isOpen: false,
             redirect:''
@@ -21,6 +22,7 @@ class RentRoom extends React.Component {
         this.setState({
             redirect :  <Redirect to="/"/>
         })
+        window.sessionStorage.clear()
     }
     onClickRentRoom = (e) => {
         if(localStorage.getItem("UserInfo") !== undefined && localStorage.getItem("UserInfo") !== null){
@@ -32,14 +34,21 @@ class RentRoom extends React.Component {
                 .then(function (response) {
                     console.log(response.data);
                     if (response.data === 'Reserved') {
+                        window.sessionStorage.clear()
+                        window.sessionStorage.setItem("resultReserv","success");
                         this.setState({
                             redirect :  <Redirect to="/"/>
                         })
+                    }else {
+                        window.sessionStorage.clear()
+                        window.sessionStorage.setItem("resultReserv","error");
                     }
                 }.bind(this))
                 .catch(function (error) {
+                    window.sessionStorage.clear()
                     console.log(error);
                 });
+
         }
         else {
             this.setState({
@@ -55,7 +64,7 @@ class RentRoom extends React.Component {
 
     render() {
         let Redirect = this.state.redirect;
-        let roomSelected = JSON.parse(window.sessionStorage.getItem("roomSelected"));
+        let roomSelected = this.state.roomdetail;
         const images = [
             roomSelected.picture,
             roomSelected.picture,

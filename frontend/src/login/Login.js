@@ -1,6 +1,7 @@
 import React from 'react'
 import {Button, Icon} from 'semantic-ui-react'
 import axios from 'axios'
+import { Message } from 'semantic-ui-react'
 class LoginPage extends React.Component {
     constructor(){
         super();
@@ -39,9 +40,18 @@ class LoginPage extends React.Component {
     }
 
     render() {
-
+        let message = "";
+        console.log(sessionStorage.getItem("roomSelected"))
+        if(sessionStorage.getItem("roomSelected") !==null && sessionStorage.getItem("roomSelected")!== undefined ){
+            message = <Message
+                icon='id card'
+                header='Please login'
+                content='You can login with fackbook or google+'
+            />
+        }
         return (
             <div>
+                {message}
                 <div>
                     <Button color='facebook' onClick={this.onLoginByFacebook}>
                         <Icon name='facebook'/> Facebook

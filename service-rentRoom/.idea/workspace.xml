@@ -41,8 +41,13 @@
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-              <folding />
+              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding>
+                <marker date="1504234460296" expanded="true" signature="367:406" ph="{&quot;origin&quot;: 'http://localhost:3000'...}" />
+                <marker date="1504234460296" expanded="true" signature="537:654" ph="//..." />
+                <marker date="1504234460296" expanded="true" signature="966:1038" ph="{...}" />
+                <marker date="1504234460296" expanded="true" signature="1097:1343" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -51,8 +56,15 @@
         <entry file="file://$PROJECT_DIR$/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="71">
-              <caret line="10" column="57" lean-forward="true" selection-start-line="10" selection-start-column="57" selection-end-line="10" selection-end-column="57" />
-              <folding />
+              <caret line="10" column="57" lean-forward="false" selection-start-line="10" selection-start-column="57" selection-end-line="10" selection-end-column="57" />
+              <folding>
+                <marker date="1504318788544" expanded="true" signature="96:116" ph="/*...*/" />
+                <marker date="1504318788544" expanded="true" signature="158:207" ph="{...}" />
+                <marker date="1504318788544" expanded="true" signature="261:612" ph="{...}" />
+                <marker date="1504318788544" expanded="true" signature="319:381" ph="{&quot;id&quot;: req.body.id...}" />
+                <marker date="1504318788544" expanded="true" signature="417:503" ph="{...}" />
+                <marker date="1504318788544" expanded="true" signature="537:608" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -165,16 +177,15 @@
       <workItem from="1503997477891" duration="7482000" />
       <workItem from="1504169705084" duration="50000" />
       <workItem from="1504257523909" duration="63000" />
-      <workItem from="1504318756788" duration="886000" />
+      <workItem from="1504318756788" duration="1299000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12268000" />
+    <option name="totallyTimeSpent" value="12681000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -209,7 +220,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="12" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="12" />
-          <folding />
+          <folding>
+            <marker date="1504318788544" expanded="true" signature="96:116" ph="/*...*/" />
+            <marker date="1504318788544" expanded="true" signature="158:207" ph="{...}" />
+            <marker date="1504318788544" expanded="true" signature="261:612" ph="{...}" />
+            <marker date="1504318788544" expanded="true" signature="319:381" ph="{&quot;id&quot;: req.body.id...}" />
+            <marker date="1504318788544" expanded="true" signature="417:503" ph="{...}" />
+            <marker date="1504318788544" expanded="true" signature="537:608" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -225,7 +243,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1504234460296" expanded="true" signature="367:406" ph="{&quot;origin&quot;: 'http://localhost:3000'...}" />
+            <marker date="1504234460296" expanded="true" signature="537:654" ph="//..." />
+            <marker date="1504234460296" expanded="true" signature="966:1038" ph="{...}" />
+            <marker date="1504234460296" expanded="true" signature="1097:1343" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -233,7 +256,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1504318788544" expanded="true" signature="96:116" ph="/*...*/" />
+            <marker date="1504318788544" expanded="true" signature="158:207" ph="{...}" />
+            <marker date="1504318788544" expanded="true" signature="261:612" ph="{...}" />
+            <marker date="1504318788544" expanded="true" signature="319:381" ph="{&quot;id&quot;: req.body.id...}" />
+            <marker date="1504318788544" expanded="true" signature="417:503" ph="{...}" />
+            <marker date="1504318788544" expanded="true" signature="537:608" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -241,7 +271,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="782">
           <caret line="46" column="31" lean-forward="false" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
-          <folding />
+          <folding>
+            <marker date="1504234460296" expanded="true" signature="367:406" ph="{&quot;origin&quot;: 'http://localhost:3000'...}" />
+            <marker date="1504234460296" expanded="true" signature="537:654" ph="//..." />
+            <marker date="1504234460296" expanded="true" signature="966:1038" ph="{...}" />
+            <marker date="1504234460296" expanded="true" signature="1097:1343" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -257,7 +292,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
           <caret line="4" column="22" lean-forward="false" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-          <folding />
+          <folding>
+            <marker date="1504318788544" expanded="true" signature="96:116" ph="/*...*/" />
+            <marker date="1504318788544" expanded="true" signature="158:207" ph="{...}" />
+            <marker date="1504318788544" expanded="true" signature="261:612" ph="{...}" />
+            <marker date="1504318788544" expanded="true" signature="319:381" ph="{&quot;id&quot;: req.body.id...}" />
+            <marker date="1504318788544" expanded="true" signature="417:503" ph="{...}" />
+            <marker date="1504318788544" expanded="true" signature="537:608" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -265,7 +307,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="736">
           <caret line="46" column="31" lean-forward="false" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
-          <folding />
+          <folding>
+            <marker date="1504234460296" expanded="true" signature="367:406" ph="{&quot;origin&quot;: 'http://localhost:3000'...}" />
+            <marker date="1504234460296" expanded="true" signature="537:654" ph="//..." />
+            <marker date="1504234460296" expanded="true" signature="966:1038" ph="{...}" />
+            <marker date="1504234460296" expanded="true" signature="1097:1343" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -281,7 +328,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="22" lean-forward="false" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-          <folding />
+          <folding>
+            <marker date="1504318788544" expanded="true" signature="96:116" ph="/*...*/" />
+            <marker date="1504318788544" expanded="true" signature="158:207" ph="{...}" />
+            <marker date="1504318788544" expanded="true" signature="261:612" ph="{...}" />
+            <marker date="1504318788544" expanded="true" signature="319:381" ph="{&quot;id&quot;: req.body.id...}" />
+            <marker date="1504318788544" expanded="true" signature="417:503" ph="{...}" />
+            <marker date="1504318788544" expanded="true" signature="537:608" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -289,7 +343,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="782">
           <caret line="46" column="31" lean-forward="false" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
-          <folding />
+          <folding>
+            <marker date="1504234460296" expanded="true" signature="367:406" ph="{&quot;origin&quot;: 'http://localhost:3000'...}" />
+            <marker date="1504234460296" expanded="true" signature="537:654" ph="//..." />
+            <marker date="1504234460296" expanded="true" signature="966:1038" ph="{...}" />
+            <marker date="1504234460296" expanded="true" signature="1097:1343" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -321,7 +380,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="431">
           <caret line="46" column="31" lean-forward="false" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
-          <folding />
+          <folding>
+            <marker date="1504234460296" expanded="true" signature="367:406" ph="{&quot;origin&quot;: 'http://localhost:3000'...}" />
+            <marker date="1504234460296" expanded="true" signature="537:654" ph="//..." />
+            <marker date="1504234460296" expanded="true" signature="966:1038" ph="{...}" />
+            <marker date="1504234460296" expanded="true" signature="1097:1343" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -329,7 +393,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
           <caret line="4" column="22" lean-forward="false" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-          <folding />
+          <folding>
+            <marker date="1504318788544" expanded="true" signature="96:116" ph="/*...*/" />
+            <marker date="1504318788544" expanded="true" signature="158:207" ph="{...}" />
+            <marker date="1504318788544" expanded="true" signature="261:612" ph="{...}" />
+            <marker date="1504318788544" expanded="true" signature="319:381" ph="{&quot;id&quot;: req.body.id...}" />
+            <marker date="1504318788544" expanded="true" signature="417:503" ph="{...}" />
+            <marker date="1504318788544" expanded="true" signature="537:608" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -337,7 +408,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="22" lean-forward="false" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-          <folding />
+          <folding>
+            <marker date="1504318788544" expanded="true" signature="96:116" ph="/*...*/" />
+            <marker date="1504318788544" expanded="true" signature="158:207" ph="{...}" />
+            <marker date="1504318788544" expanded="true" signature="261:612" ph="{...}" />
+            <marker date="1504318788544" expanded="true" signature="319:381" ph="{&quot;id&quot;: req.body.id...}" />
+            <marker date="1504318788544" expanded="true" signature="417:503" ph="{...}" />
+            <marker date="1504318788544" expanded="true" signature="537:608" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -345,7 +423,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="782">
           <caret line="46" column="31" lean-forward="false" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
-          <folding />
+          <folding>
+            <marker date="1504234460296" expanded="true" signature="367:406" ph="{&quot;origin&quot;: 'http://localhost:3000'...}" />
+            <marker date="1504234460296" expanded="true" signature="537:654" ph="//..." />
+            <marker date="1504234460296" expanded="true" signature="966:1038" ph="{...}" />
+            <marker date="1504234460296" expanded="true" signature="1097:1343" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -376,16 +459,28 @@
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <marker date="1504234460296" expanded="true" signature="367:406" ph="{&quot;origin&quot;: 'http://localhost:3000'...}" />
+            <marker date="1504234460296" expanded="true" signature="537:654" ph="//..." />
+            <marker date="1504234460296" expanded="true" signature="966:1038" ph="{...}" />
+            <marker date="1504234460296" expanded="true" signature="1097:1343" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="71">
-          <caret line="10" column="57" lean-forward="true" selection-start-line="10" selection-start-column="57" selection-end-line="10" selection-end-column="57" />
-          <folding />
+          <caret line="10" column="57" lean-forward="false" selection-start-line="10" selection-start-column="57" selection-end-line="10" selection-end-column="57" />
+          <folding>
+            <marker date="1504318788544" expanded="true" signature="96:116" ph="/*...*/" />
+            <marker date="1504318788544" expanded="true" signature="158:207" ph="{...}" />
+            <marker date="1504318788544" expanded="true" signature="261:612" ph="{...}" />
+            <marker date="1504318788544" expanded="true" signature="319:381" ph="{&quot;id&quot;: req.body.id...}" />
+            <marker date="1504318788544" expanded="true" signature="417:503" ph="{...}" />
+            <marker date="1504318788544" expanded="true" signature="537:608" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
