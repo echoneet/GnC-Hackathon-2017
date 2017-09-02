@@ -8,8 +8,6 @@ services:
         build: ./frontend
         ports:
         - "3000:3000"
-        volumes:
-        - ./frontend/src:/frontend/src:rw
     searchroomservice:
         build: ./service-searchRoom
         ports:
@@ -22,7 +20,27 @@ services:
         build: ./service-uploadPayment
         ports:
         - "8093:8093"
-    reportRentRoom:
+    reportrentroom:
         build: ./service-reportRentRoom
         ports:
         - "8094:8094"
+    registerbyfacebook:
+        build: ./service-register-with-facebook
+        ports:
+        - "8095:8095"
+    roommanage:
+        build: ./service-room
+        ports:
+        - "8096:8096"
+    registerbyhoogle:
+        build: ./service-register-with-google-plus
+        ports:
+        - "8097:8097"
+    searchroombycoordinate:
+        build: ./service-search-room-by-coordinate
+        ports:
+        - "8098:8098"
+    registermanage:
+        build: ./service-manage-register
+        ports:
+        - "8099:8099"

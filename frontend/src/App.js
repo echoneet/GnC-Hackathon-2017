@@ -13,25 +13,13 @@ import {Menu, Icon} from 'semantic-ui-react';
 
 class ConfirmAuth extends React.Component {
     componentDidMount() {
-        console.log(this.props.match.params.uuid)
-        axios.post('http://localhost:8099/getUserInfo', {
-            id: this.props.match.params.uuid
-        })
-            .then(function (response) {
-                console.log(response.data)
-                localStorage.setItem('UserInfo', response.data);
-                window.close();
-            })
-            .catch(function (error) {
-                console.log(error);
-                window.close();
-            });
-
+        localStorage.setItem("authUUid", this.props.match.params.uuid);
+        window.close();
     }
 
     render() {
         return (
-            <div>loading</div>
+            <div>Login/Register Success</div>
         )
     }
 }
@@ -40,25 +28,56 @@ class ConfirmAuth extends React.Component {
 class App extends React.Component {
     state = {}
 
+    constructor() {
+        super()
+        this.state = {
+            redirect: ''
+        };
+    }
 
     componentDidMount() {
         window.addEventListener("storage", function () {
-            let a = localStorage.getItem("eiei");
-            console.log(a);
-            if (a === "no") {
-                window.close();
+            var self = this;
+            let uuidAuthId = localStorage.getItem("authUUid")
+            if (uuidAuthId !== null) {
+                axios.post('http://localhost:8099/getUserInfo', {
+                    id: uuidAuthId
+                })
+                    .then(function (response) {
+                        localStorage.clear();
+                        localStorage.setItem('UserInfo', response.data);
+                        if (sessionStorage.getItem("roomSelected") !== null) {
+                            self.setState({
+                                redirect: <Redirect to="/rentRoom"/>
+                            })
+                        }
+                        else {
+                            self.setState({
+                                redirect: <Redirect to="/"/>
+                            })
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
             }
-            //localStorage.clear();
-        }, false);
+        }.bind(this), false);
     }
 
-    handleItemClick = (e, {name}) => this.setState({activeItem: name})
+    handleItemClick = (e, {name}) => {
+        this.setState({activeItem: name})
+        if (name === 'Login') {
+            sessionStorage.clear();
+        }
+    }
 
     render() {
+        let Redirect = this.state.redirect;
         const {activeItem} = this.state
         return (
             <BrowserRouter>
                 <div className="App">
+                    {Redirect}
                     <div className="App-header">
                         <img src={logo} className="App-logo" alt="logo"/>
                         <h2 className="App-title">Hackathon2017</h2>
@@ -66,37 +85,31 @@ class App extends React.Component {
                     <div className="App-Detail">
                         <div className="App-Sidebar">
                             <Menu vertical className="Menu">
-                                <Link to="/login">
-                                    <Menu.Item name='browse' active={activeItem === 'browse'}
-                                               onClick={this.handleItemClick}>
-                                        <Icon name='user circle outline'/>
-                                        Login/Register
-                                    </Menu.Item>
-                                </Link>
+                                <Menu.Item as={Link} to="/login" name='Login' active={activeItem === 'Login'}
+                                           onClick={this.handleItemClick}>
+                                    <Icon name='user circle outline'/>
+                                    Login/Register
+                                </Menu.Item>
 
                                 <Menu.Item>
                                     <Icon name='grid layout'/>
                                     Rent
                                     <Menu.Menu>
-                                        <Link to="/">
-                                            <Menu.Item
-                                                name='Search'
-                                                active={activeItem === 'Search'}
-                                                onClick={this.handleItemClick}
-                                            >
-                                                Search
-                                            </Menu.Item>
-                                        </Link>
+                                        <Menu.Item as={Link} to="/"
+                                                   name='Search'
+                                                   active={activeItem === 'Search'}
+                                                   onClick={this.handleItemClick}
+                                        >
+                                            Search
+                                        </Menu.Item>
 
-                                        <Link to="/uploadPayment">
-                                            <Menu.Item
-                                                name='reviews'
-                                                active={activeItem === 'uploadPayment'}
-                                                onClick={this.handleItemClick}
-                                            >
-                                                uploadPayment
-                                            </Menu.Item>
-                                        </Link>
+                                        <Menu.Item as={Link} to="/uploadPayment"
+                                                   name='uploadPayment'
+                                                   active={activeItem === 'uploadPayment'}
+                                                   onClick={this.handleItemClick}
+                                        >
+                                            uploadPayment
+                                        </Menu.Item>
                                     </Menu.Menu>
                                 </Menu.Item>
                             </Menu>

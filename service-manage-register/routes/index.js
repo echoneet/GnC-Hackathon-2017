@@ -4,11 +4,11 @@ var mongojs = require('mongojs');
 var ObjectId = mongojs.ObjectId;
 var db = mongojs('dev.iris.echoneet.space/userdetail', ["userdata"]);
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'UserManage' });
+router.get('/', function (req, res, next) {
+    res.render('index', {title: 'UserManage'});
 });
 
-router.post('/findUser',function (req,res,next) {
+router.post('/findUser', function (req, res, next) {
     console.log("findUser")
     console.log(req.body.userdetail.id)
     //res.send("test");
@@ -20,16 +20,16 @@ router.post('/findUser',function (req,res,next) {
                 res.send(docs);
             })
         }
-        else{
+        else {
             res.send(docs);
         }
     });
 })
 
-router.post('/getUserInfo',function (req,res,next) {
-    console.log("getUserInfo"+req.body.id)
-    db.userdata.findOne({_id:ObjectId(req.body.id)}, function (err, docs) {
-        if(docs !== null){
+router.post('/getUserInfo', function (req, res, next) {
+    console.log("getUserInfo" + req.body.id)
+    db.userdata.findOne({_id: ObjectId(req.body.id)}, function (err, docs) {
+        if (docs !== null) {
             res.send(docs.displayName)
         }
     })

@@ -1,28 +1,29 @@
 import React from 'react'
 import {Button, Icon} from 'semantic-ui-react'
-import axios from 'axios'
-import { Message } from 'semantic-ui-react'
+import {Message} from 'semantic-ui-react'
+
 class LoginPage extends React.Component {
-    constructor(){
+    constructor() {
         super();
         this.state = {
-            uuid:""
+            uuid: ""
         }
     }
-    onLoginByGoogle = (e) =>{
+
+    onLoginByGoogle = (e) => {
         let url = "http://localhost:8097/auth/google";
-        window.open (url,"mywindow","menubar=1,resizable=1,width=700,height=500");
+        window.open(url, "mywindow", "menubar=1,resizable=1,width=700,height=500");
     }
 
-    onLoginByFacebook = (e) =>{
-        let url ="http://localhost:8095/login/facebook";
-        window.open (url,"mywindow","menubar=1,resizable=1,width=700,height=500");
+    onLoginByFacebook = (e) => {
+        let url = "http://localhost:8095/login/facebook";
+        window.open(url, "mywindow", "menubar=1,resizable=1,width=700,height=500");
     }
 
     render() {
         let message = "";
         console.log(sessionStorage.getItem("roomSelected"))
-        if(sessionStorage.getItem("roomSelected") !==null && sessionStorage.getItem("roomSelected")!== undefined ){
+        if (sessionStorage.getItem("roomSelected") !== null && sessionStorage.getItem("roomSelected") !== undefined) {
             message = <Message
                 icon='id card'
                 header='Please login'

@@ -22,3 +22,5 @@ service-register-with-google-plus/.idea/
 service-search-room-by-coordinate/\.idea/
 
 service-search-room-by-coordinate/node_modules/
+
+service-manage-register/\.idea/
