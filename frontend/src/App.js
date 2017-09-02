@@ -8,12 +8,24 @@ import ReportRentRoom from './reportRentRoom/reportRentRoom';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
 import Login from './login/Login';
+import axios from 'axios';
 import {Menu, Icon} from 'semantic-ui-react';
 
-class testReturn extends React.Component {
+class ConfirmAuth extends React.Component {
     componentDidMount() {
-        window.localStorage.setItem("eiei", "no");
-        window.close();
+        console.log(this.props.match.params.uuid)
+        axios.post('http://localhost:8095/getUserInfo',{
+            id:this.props.match.params.uuid
+        })
+            .then(function (response) {
+                console.log(response.data)
+                //localStorage.setItem('UserInfo', response.data);
+                window.localStorage.setItem("eiei", "oiqhwdihwqdqwidh");
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        //window.close();
     }
 
     render() {
@@ -32,7 +44,10 @@ class App extends React.Component {
         window.addEventListener("storage", function () {
             let a = localStorage.getItem("eiei");
             console.log(a);
-            localStorage.clear();
+            if (a === "no"){
+                window.close();
+            }
+            //localStorage.clear();
         }, false);
     }
 
@@ -91,7 +106,7 @@ class App extends React.Component {
                             <Route exact path="/uploadPayment" component={UploadPayment}/>
                             <Route exact path="/login" component={Login}/>
                             <Route exact path="/reportRentRoom" component={ReportRentRoom}/>
-                            <Route exact path="/testReturn" component={testReturn}/>
+                            <Route path="/testReturn/:uuid" component={ConfirmAuth}/>
 
                         </div>
                     </div>

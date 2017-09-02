@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongojs = require('mongojs');
-
+var ObjectId = mongojs.ObjectId;
 var index = require('./routes/index');
 var users = require('./routes/users');
 
@@ -20,7 +20,7 @@ const uuidv4 = require('uuid/v4');
 passport.use(new Strategy({
         clientID: '128532184445160',
         clientSecret: 'd36d0221f55e198b49c0c076eb764072',
-        callbackURL: 'http://localhost:8095/login/facebook/:uuid'
+        callbackURL: 'http://localhost:8095/login/facebook/'
     },
     function (accessToken, refreshToken, profile, cb) {
         return cb(null, profile);
@@ -66,23 +66,32 @@ app.get('/user',
         res.send(req.user)
     });
 
-app.get('/login/facebook/:uuid',
+app.get('/login/facebook',
     passport.authenticate('facebook', {failureRedirect: '/login/fail'}),
     function (req, res) {
-        console.log("query url : "+req.params.code);
         db.userdata.findOne({id: req.user.id}, function (err, docs) {
             console.log(docs);
             if (docs === null) {
                 db.userdata.insert(req.user);
+                db.userdata.findOne({id: req.user.id}, function (err, docs) {
+                    res.redirect('http://localhost:3000/testreturn/'+docs._id);
+                })
+            }
+            else{
+                res.redirect('http://localhost:3000/testreturn/'+docs._id);
             }
         });
-        res.send(req.user)
     });
 
-app.get('/getUUID',function (req,res,next) {
-    console.log("getUUID")
-    res.send(uuidv4())
+app.post('/getUserInfo',function (req,res,next) {
+    console.log("getUserInfo"+req.body.id)
+    db.userdata.findOne({_id:ObjectId(req.body.id)}, function (err, docs) {
+        if(docs !== null){
+            res.send(docs.displayName)
+        }
+    })
 })
+
 app.post('/LoginByFacebook',function (req,res,next) {
     console.log(req.body.uuid)
     res.send("login OK")
