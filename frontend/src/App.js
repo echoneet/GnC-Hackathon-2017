@@ -5,6 +5,7 @@ import SearchRoom from './searchRoom/SearchRoom';
 import RoomInfo from './rentRoom/RentRoom';
 import UploadPayment from './uploadPayment/UploadPayment';
 import ReportRentRoom from './reportRentRoom/reportRentRoom';
+import SearchRoomByCoordinate from './searchRoomByCoordinate/SearchRoomByCoordinate'
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
 import Login from './login/Login';
@@ -103,6 +104,7 @@ class App extends React.Component {
                         </div>
                         <div className="App-detail-detail">
                             <Route exact path="/" component={SearchRoom}/>
+                            <Route exact path="/searchRoomByCoordinate" component={SearchRoomByCoordinate}/>
                             <Route exact path="/rentRoom" component={RoomInfo}/>
                             <Route exact path="/uploadPayment" component={UploadPayment}/>
                             <Route exact path="/login" component={Login}/>
