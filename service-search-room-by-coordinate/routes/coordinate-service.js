@@ -20,7 +20,7 @@ router.get('/getFromLatLng/:lat/:lng', function (req, res, next) {
                 if(address.types.includes('political'))
                     namelist.push(address.long_name)
             });
-            axios.post('http://localhost:8096/SearchRoomLatLong',{
+            axios.post('http://roommanage:8096/SearchRoomLatLong',{
                 location:{result : namelist[namelist.length-3] + " " +namelist[namelist.length-2]}
             })
                 .then(function (response) {
