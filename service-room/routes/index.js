@@ -42,9 +42,10 @@ router.post('/SearchRoomInManage',function (req,res,next) {
 
 router.post('/RentRoomInManage', function(req, res, next) {
     console.log(req.body.id);
+    console.log(req.body.renter)
     db.Room.update(
         { _id: ObjectId(req.body.id) },
-        { $set: { "status": "Reserved" } }
+        { $set: { "status": "Reserved" ,"renter": req.body.renter} }
         ,function (err, doc, lastErrorObject) {
             if (err !== null){
                 res.status(500);

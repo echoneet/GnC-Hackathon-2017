@@ -1,4 +1,5 @@
 import React from 'react';
+import {Redirect}  from 'react-router'
 import './RentRoom.css'
 import Slider from 'react-slick';
 import axios from 'axios';
@@ -10,28 +11,51 @@ class RentRoom extends React.Component {
         super(props);
 
         this.state = {
+            roomdetail:JSON.parse(window.sessionStorage.getItem("roomSelected")) ,
             photoIndex: 0,
-            isOpen: false
+            isOpen: false,
+            redirect:''
         };
     }
 
     backToSearchRoom = (e) => {
-        window.location = '/';
+        this.setState({
+            redirect :  <Redirect to="/"/>
+        })
+        window.sessionStorage.clear()
     }
     onClickRentRoom = (e) => {
-        let roomSelected = JSON.parse(window.sessionStorage.getItem("roomSelected"));
-        axios.post('http://localhost:8092/RentRoom', {
-            id: roomSelected._id
-        })
-            .then(function (response) {
-                console.log(response.data);
-                if (response.data === 'Reserved') {
-                    window.location = '/';
-                }
+        if(localStorage.getItem("UserInfo") !== undefined && localStorage.getItem("UserInfo") !== null){
+            let roomSelected = JSON.parse(window.sessionStorage.getItem("roomSelected"));
+            axios.post('http://localhost:8092/RentRoom', {
+                id: roomSelected._id,
+                renter: localStorage.getItem("UserInfo")
             })
-            .catch(function (error) {
-                console.log(error);
-            });
+                .then(function (response) {
+                    console.log(response.data);
+                    if (response.data === 'Reserved') {
+                        window.sessionStorage.clear()
+                        window.sessionStorage.setItem("resultReserv","success");
+                        this.setState({
+                            redirect :  <Redirect to="/"/>
+                        })
+                    }else {
+                        window.sessionStorage.clear()
+                        window.sessionStorage.setItem("resultReserv","error");
+                    }
+                }.bind(this))
+                .catch(function (error) {
+                    window.sessionStorage.clear()
+                    console.log(error);
+                });
+
+        }
+        else {
+            this.setState({
+                redirect :  <Redirect to="/login"/>
+            })
+        }
+
     }
 
     addCommaToLargeNum = (number) => {
@@ -39,7 +63,8 @@ class RentRoom extends React.Component {
     }
 
     render() {
-        let roomSelected = JSON.parse(window.sessionStorage.getItem("roomSelected"));
+        let Redirect = this.state.redirect;
+        let roomSelected = this.state.roomdetail;
         const images = [
             roomSelected.picture,
             roomSelected.picture,
@@ -61,6 +86,7 @@ class RentRoom extends React.Component {
 
         return (
             <div className="RentRoom">
+                {Redirect}
                 <div>
                     ชื่อ : {roomSelected.name}
                 </div>

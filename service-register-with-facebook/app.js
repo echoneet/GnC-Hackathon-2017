@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongojs = require('mongojs');
-
+var ObjectId = mongojs.ObjectId;
 var index = require('./routes/index');
 var users = require('./routes/users');
 
@@ -13,6 +13,7 @@ var passport = require('passport');
 var Strategy = require('passport-facebook').Strategy;
 
 var db = mongojs('dev.iris.echoneet.space/registerWithFacebookService', ["userdata"]);
+
 
 passport.use(new Strategy({
         clientID: '128532184445160',
@@ -30,8 +31,12 @@ passport.serializeUser(function (user, cb) {
 passport.deserializeUser(function (obj, cb) {
     cb(null, obj);
 });
-
+var cors = require('cors');
 var app = express();
+var corsOptions = {
+    origin: 'http://localhost:3000'
+}
+app.use(cors(corsOptions))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -61,10 +66,29 @@ app.get('/login/facebook',
             console.log(docs);
             if (docs === null) {
                 db.userdata.insert(req.user);
+                db.userdata.findOne({id: req.user.id}, function (err, docs) {
+                    res.redirect('http://localhost:3000/testreturn/'+docs._id);
+                })
+            }
+            else{
+                res.redirect('http://localhost:3000/testreturn/'+docs._id);
             }
         });
-        res.send(req.user)
     });
+
+app.post('/getUserInfo',function (req,res,next) {
+    console.log("getUserInfo"+req.body.id)
+    db.userdata.findOne({_id:ObjectId(req.body.id)}, function (err, docs) {
+        if(docs !== null){
+            res.send(docs.displayName)
+        }
+    })
+})
+
+app.post('/LoginByFacebook',function (req,res,next) {
+    console.log(req.body.uuid)
+    res.send("login OK")
+})
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -72,6 +96,8 @@ app.use(function (req, res, next) {
     err.status = 404;
     next(err);
 });
+
+
 
 // error handler
 app.use(function (err, req, res, next) {

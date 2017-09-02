@@ -20,9 +20,10 @@ class reportRentRoom extends React.Component {
             searchReport: true
         })
         if(this.state.monthReport !== ''){
-            console.log(this.state.monthReport)
+            console.log(localStorage.getItem("UserInfo"))
             axios.post('http://localhost:8094/test',{
-                month:this.state.monthReport
+                month:this.state.monthReport,
+                username:localStorage.getItem("UserInfo")
             })
                 .then(function (response) {
                     this.setState({
@@ -47,7 +48,7 @@ class reportRentRoom extends React.Component {
                             {resultReport[i].rentername}
                         </td>
                         <td>
-                            {resultReport[i].room}
+                            {resultReport[i].revenue}
                         </td>
                         <td>
                             {resultReport[i].rentdate}
