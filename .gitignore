@@ -18,3 +18,7 @@ service-register-with-facebook/node_modules
 service-register-with-facebook/.idea/
 service-register-with-google-plus/node_modules/
 service-register-with-google-plus/.idea/
+
+service-search-room-by-coordinate/\.idea/
+
+service-search-room-by-coordinate/node_modules/
