@@ -14,13 +14,15 @@ import {Menu, Icon} from 'semantic-ui-react';
 class ConfirmAuth extends React.Component {
     componentDidMount() {
         console.log(this.props.match.params.uuid)
-        axios.post('http://localhost:8095/getUserInfo',{
-            id:this.props.match.params.uuid
+        axios.post('http://localhost:8095/getUserInfo', {
+            id: this.props.match.params.uuid
         })
             .then(function (response) {
                 console.log(response.data)
                 //localStorage.setItem('UserInfo', response.data);
-                window.localStorage.setItem("eiei", "oiqhwdihwqdqwidh");
+                localStorage.setItem("eiei", "oiqhwdihwqdqwidh");
+                let a = localStorage.getItem("eiei");
+                console.log(a)
             })
             .catch(function (error) {
                 console.log(error);
@@ -44,7 +46,7 @@ class App extends React.Component {
         window.addEventListener("storage", function () {
             let a = localStorage.getItem("eiei");
             console.log(a);
-            if (a === "no"){
+            if (a === "no") {
                 window.close();
             }
             //localStorage.clear();

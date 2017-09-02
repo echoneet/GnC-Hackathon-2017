@@ -14,8 +14,6 @@ var Strategy = require('passport-facebook').Strategy;
 
 var db = mongojs('dev.iris.echoneet.space/registerWithFacebookService', ["userdata"]);
 
-//generate uuid
-const uuidv4 = require('uuid/v4');
 
 passport.use(new Strategy({
         clientID: '128532184445160',
