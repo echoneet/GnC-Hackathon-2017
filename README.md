@@ -1,4 +1,4 @@
 # Rent room application
-use for G&C Hackathon 2017
+Rentroom System Project for internal G&C Hackathon 2017
 
 Team Nothing
