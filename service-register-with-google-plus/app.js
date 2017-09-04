@@ -53,7 +53,7 @@ app.use('/login/fail', function (req, res, next) {
 app.get('/auth/google',
     passport.authenticate('google', { scope: ['profile'],failureRedirect: '/login/fail' }),
     function(req, res) {
-        axios.post('http://localhost:8099/findUser',{
+        axios.post('http://usermanage:8099/findUser',{
             userdetail:req.user
         })
             .then(function (response) {

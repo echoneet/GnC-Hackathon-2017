@@ -25,6 +25,22 @@ router.get('/SearchRoomInManage',function (req,res,next) {
 
 })
 
+router.post('/SearchRoomLatLong',function (req,res,next) {
+    console.log(req.body.location.result);
+    let location = req.body.location.result
+    db.Room.find({location:{$regex : location}},function (err,docs) {
+        if (err !== null){
+            res.status(500);
+            res.send('database error')
+        }
+        else{
+            console.log(docs);
+            res.send(docs);
+        }
+    })
+
+})
+
 router.post('/SearchRoomInManage',function (req,res,next) {
     console.log(req.body);
     db.Room.find({price:{$gte:req.body.min,$lte:req.body.max},status:"notReserved"}).sort({price:1},function (err,docs) {

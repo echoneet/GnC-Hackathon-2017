@@ -12,7 +12,7 @@ router.get('/SearchRoom', function (req, res, next) {
         .then(function (response) {
             console.log(response.data)
             res.send(response.data)
-        })
+})
         .catch(function (error) {
             console.log(error);
             res.send(error)

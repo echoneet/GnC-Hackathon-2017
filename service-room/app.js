@@ -11,7 +11,7 @@ var users = require('./routes/users');
 var cors = require('cors');
 var app = express();
 var corsOptions = {
-    origin: ['http://localhost:8091','http://localhost:8092']
+    origin: ['http://localhost:8091','http://localhost:8092','http://localhost:8098']
 }
 app.use(cors(corsOptions))
 
