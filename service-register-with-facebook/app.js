@@ -11,7 +11,6 @@ var passport = require('passport');
 var Strategy = require('passport-facebook').Strategy;
 
 
-
 passport.use(new Strategy({
         clientID: '128532184445160',
         clientSecret: 'd36d0221f55e198b49c0c076eb764072',
@@ -59,11 +58,11 @@ app.use('/login/fail', function (req, res, next) {
 app.get('/login/facebook',
     passport.authenticate('facebook', {failureRedirect: '/login/fail'}),
     function (req, res) {
-        axios.post('http://usermanage:8099/findUser',{
-            userdetail:req.user
+        axios.post('http://registermanage:8099/findUser', {
+            userdetail: req.user
         })
             .then(function (response) {
-                res.redirect('http://localhost:3000/testreturn/'+response.data._id)
+                res.redirect('http://localhost:3000/testreturn/' + response.data._id)
                 console.log(response.data);
             })
             .catch(function (error) {
@@ -72,7 +71,7 @@ app.get('/login/facebook',
     });
 
 
-app.post('/LoginByFacebook',function (req,res,next) {
+app.post('/LoginByFacebook', function (req, res, next) {
     console.log(req.body.uuid)
     res.send("login OK")
 })
@@ -83,7 +82,6 @@ app.use(function (req, res, next) {
     err.status = 404;
     next(err);
 });
-
 
 
 // error handler

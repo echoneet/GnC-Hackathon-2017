@@ -103,19 +103,25 @@ class App extends React.Component {
                                         >
                                             Search
                                         </Menu.Item>
-                                            <Menu.Item as={Link} to="/searchRoomByCoordinate"
-                                                name='SearchCoordinate'
-                                                active={activeItem === 'SearchCoordinate'}
-                                                onClick={this.handleItemClick}
-                                            >
-                                                SearchByCoordinate
-                                            </Menu.Item>
+                                        <Menu.Item as={Link} to="/searchRoomByCoordinate"
+                                                   name='SearchCoordinate'
+                                                   active={activeItem === 'SearchCoordinate'}
+                                                   onClick={this.handleItemClick}
+                                        >
+                                            SearchByCoordinate
+                                        </Menu.Item>
                                         <Menu.Item as={Link} to="/uploadPayment"
                                                    name='uploadPayment'
                                                    active={activeItem === 'uploadPayment'}
                                                    onClick={this.handleItemClick}
                                         >
-                                            uploadPayment
+                                        </Menu.Item>
+                                        <Menu.Item as={Link} to="/ReportRentRoom"
+                                                   name='ReportRentRoom'
+                                                   active={activeItem === 'ReportRentRoom'}
+                                                   onClick={this.handleItemClick}
+                                        >
+                                            Report
                                         </Menu.Item>
                                     </Menu.Menu>
                                 </Menu.Item>
